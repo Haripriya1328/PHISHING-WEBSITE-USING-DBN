@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phishing</title>
+</head>
+<body style="background-color: red;">
+    <center>
+        <img src="\static\phish.png" height="50%" width="50%" style="padding: 2%;">
+
+        <h2 style="font-size:40px; color:white;">Website is not secure :(</h2>
+   
+   
+    <div id="resultDiv">
+        <h2>Entered URL:</h2>
+        <p id="outputText">No URL entered.</p>
+        <button id="copyButton">Copy URL</button>
+        <button id="reportButton">Report Phishing</button>
+    </div>
+    </center>
+    <div style="background-color: blue; height: 20%; margin-top: 12%;"></div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var pastedText = localStorage.getItem("pastedText");
+            if (pastedText) {
+                document.getElementById("outputText").textContent = pastedText;
+            }
+
+            // Add click event listener to the copy button
+            document.getElementById("copyButton").addEventListener("click", function () {
+                var urlToCopy = document.getElementById("outputText").textContent;
+                copyToClipboard(urlToCopy);
+            });
+
+            // Add click event listener to the report button
+            document.getElementById("reportButton").addEventListener("click", function () {
+                window.open("https://safebrowsing.google.com/safebrowsing/report_phish/?hl=en", "_blank");
+            });          
+
+            // Function to copy text to clipboard
+            function copyToClipboard(text) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+                alert("URL copied to clipboard!");
+            }
+        });
+    </script>
+</body>
+</html>

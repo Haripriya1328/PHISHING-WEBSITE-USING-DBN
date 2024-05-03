@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Phishing Detection Website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body {
+            height: 100vh;
+            background-color: powderblue;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        #mainContent {
+            display: flex;
+            flex-grow: 1;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        #inputSection {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #imageSection {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #textInput {
+            width: 400px;
+            height: 40px;
+            font-size: 16px;
+            padding: 5px;
+            margin: 10px 0;
+        }
+        #buttonInput {
+            width: 100px;
+            height: 55px;
+            font-size: 16px;
+            padding: 5px;
+            margin: 10px 0;
+        }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; align-items: center; justify-content: center; background: linear-gradient(to right, #00b4db, #0083b0); height: 10%; animation: gradientAnimation 5s infinite;">
+        <h1 style="font-size: 35px; font-family: Handlee, cursive; font-weight: 400; font-style: normal;" class=".handlee-regular">Phishing Website Detection</h1>
+    </div>
+    <div id="mainContent">
+        <div id="inputSection">
+            <form action="{{ url_for('get_bot_response')}}" method="post">
+                <label id="msg" style="font-size: 20px; font-family: Handlee, cursive; font-weight: 400; font-style: normal;">URL</label>
+                <input id="textInput" type="url" name="msg" placeholder="Type URL" class=".handlee-regular" required>
+                <button id="buttonInput" style="font-family: Handlee, cursive; font-weight: 400; font-style: normal;">Check</button>
+            </form>
+        </div>
+        <div id="imageSection">
+            <img src="https://www.opensourceforu.com/wp-content/uploads/2022/03/phishing-attack.jpg" alt="phishing" style="max-width: 100%; max-height: 100%;">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('buttonInput').addEventListener('click', function () {
+                var urlInput = document.getElementById('textInput').value;
+                localStorage.setItem("pastedText", urlInput);
+            });
+        });
+    </script>
+</body>
+</html>

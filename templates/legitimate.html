@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Legitimate</title>
+    <style>
+        body {
+            height: 100vh;
+            background-color: powderblue;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <img src="\static\legitimate.jpg" height="50%" width="50%" style="padding:3%;">
+
+        <h2 style="font-size:40px; color:black;">Secure website :)</h2>
+
+    </div>
+    <div id="resultDiv">
+        <h2>Entered URL:</h2>
+        <p id="outputText">No URL entered.</p>
+        <button id="urlButton">Visit Website</button>
+
+    </div>
+    </center>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var pastedText = localStorage.getItem("pastedText");
+      var urlButton = document.getElementById("urlButton");
+      
+      if (pastedText) {
+        document.getElementById("outputText").textContent = pastedText;
+        // Set the URL as the href attribute of the button
+        urlButton.setAttribute("href", pastedText);
+        
+        // Add an event listener to open the URL in a new tab when the button is clicked
+        urlButton.addEventListener("click", function () {
+          window.open(pastedText, "_blank");
+        });
+        
+        // Change the button's text to "Visit Website"
+        urlButton.textContent = "Visit Website";
+      } else {
+        // If no URL is stored, disable the button
+        urlButton.disabled = true;
+      }
+    });
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,4 @@
+open Anaconda Prompt
+
+Copy     ( cd C:\Users\kakar\OneDrive\Desktop\Major project\Phishing-Website-Detection\phishing website detection  )  enter
+python output.py
